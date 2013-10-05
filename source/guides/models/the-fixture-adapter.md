@@ -1,5 +1,3 @@
-## The Fixture Adapter
-
 When developing client-side applications, your server may not have an API ready
 to develop against. The FixtureAdapter allows you to begin developing Ember.js
 apps now, and switch to another adapter when your API is ready to consume
@@ -21,7 +19,7 @@ Simply attach it to your instance of `Ember.Store`:
 var App = Ember.Application.create();
 App.Store = DS.Store.extend({
   revision: 13,
-  adapter: DS.FixtureAdapter.create();
+  adapter: DS.FixtureAdapter.create()
 });
 ```
 

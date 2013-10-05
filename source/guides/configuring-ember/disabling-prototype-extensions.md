@@ -1,5 +1,3 @@
-## Disabling Prototype Extensions
-
 By default, Ember.js will extend the prototypes of native JavaScript
 objects in the following ways:
 
@@ -32,8 +30,8 @@ described above.
 To do so, simply set the `EXTEND_PROTOTYPES` flag to `false`:
 
 ```javascript
-window.Ember = {};
-Ember.EXTEND_PROTOTYPES = false;
+window.ENV = {};
+ENV.EXTEND_PROTOTYPES = false;
 ```
 
 Note that the above code must be evaluated **before** Ember.js loads. If

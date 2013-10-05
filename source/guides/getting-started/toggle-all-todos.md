@@ -1,6 +1,4 @@
-## Toggling All Todos Between Complete and Incomplete
-
-TodoMVC allows user to toggle all existing todos into either a complete or incomplete state. It uses the same checkbox that becomes checked when all todos are completed and unchecked when one or more todos remain incomplete.
+TodoMVC allows users to toggle all existing todos into either a complete or incomplete state. It uses the same checkbox that becomes checked when all todos are completed and unchecked when one or more todos remain incomplete.
 
 To implement this behavior update the `allAreDone` property in `js/controllers/todos_controller.js` to handle both getting and setting behavior:
 
@@ -11,7 +9,7 @@ allAreDone: function (key, value) {
     return !!this.get('length') && this.everyProperty('isCompleted', true);
   } else {
     this.setEach('isCompleted', value);
-    this.get('store').save();
+    this.invoke('save');
     return value;
   }
 }.property('@each.isCompleted')
@@ -25,10 +23,10 @@ The count of remaining todos and completed todos used elsewhere in the template 
 Reload your web browser to ensure that there are no errors and the behavior described above occurs. 
 
 ### Live Preview
-<a class="jsbin-embed" href="http://jsbin.com/ipalaf/2/embed?live">Ember.js • TodoMVC</a><script src="http://static.jsbin.com/js/embed.js"></script>
+<a class="jsbin-embed" href="http://jsbin.com/AViZATE/1/embed?live">Ember.js • TodoMVC</a><script src="http://static.jsbin.com/js/embed.js"></script>
 
 ### Additional Resources
 
-  * [Changes in this step in `diff` format](https://github.com/emberjs/quickstart-code-sample/commit/820d0881f8a054a4fb8cf39884abf1d8deaf3867)
+  * [Changes in this step in `diff` format](https://github.com/emberjs/quickstart-code-sample/commit/47b289bb9f669edaa39abd971f5e884142988663)
   * [Ember.Checkbox API documentation](/api/classes/Ember.Checkbox.html)
   * [Computed Properties Guide](/guides/object-model/computed-properties/)

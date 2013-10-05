@@ -1,4 +1,5 @@
 require 'redcarpet'
+require 'pry'
 
 module TOC
   class << self
@@ -42,6 +43,8 @@ module TOC
         }
 
         entries.each do |entry|
+          next if entry[:skip_sidebar_item]
+
           current_segment = entry.url.split("/")[1]
 
           sub_current = if current_segment and current_segment == sub_url
@@ -119,7 +122,7 @@ module TOC
     end
 
     def current_guide
-      if guide_slug == 'index.html'
+      if guide_slug == '' && section_slug == 'index.html'
         current_section[1][0]
       else
         current_section[1].find do |guide|
@@ -248,13 +251,13 @@ module TOC
     WARNINGS = {
         "ember-data"=>  %Q{
           <div class="under_construction_warning">
-            <h1>
+            <h3>
               <div class="msg">
                 Warning: ember-data is a work in progress and under rapid development.
                 <br/>
                 <span class="more_caution">Use with caution!!!</span>
               </div>
-            </h1>
+            </h3>
           </div>
         }
     }

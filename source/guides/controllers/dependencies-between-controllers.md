@@ -1,5 +1,3 @@
-## Managing Dependencies Between Controllers
-
 Sometimes, especially when nesting resources, we find ourselves needing
 to have some kind of connection between two controllers. Let's take this
 router as an example:
@@ -34,8 +32,8 @@ its parent `PostController`, which can be done via `controllers.post`
 <h1>Comments for {{controllers.post.title}}</h1>
 
 <ul>
-  {{#each comment in controller}}
-    <li>{{comment.text}}</li>
+  {{#each comments}}
+    <li>{{text}}</li>
   {{/each}}
 </ul>
 ```
@@ -47,9 +45,8 @@ or want the `Post` instance directly).
 
 ```javascript
 App.CommentsController = Ember.ArrayController.extend({
-  post: null,
   needs: "post",
-  postBinding: "controllers.post"
+  post: Ember.computed.alias("controllers.post")
 });
 ```
 For more information about bindings, see the API docs for

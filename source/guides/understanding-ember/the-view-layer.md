@@ -1,5 +1,3 @@
-## The Ember.js View Layer
-
 This guide goes into extreme detail about the Ember.js view layer. It is
 intended for an experienced Ember developer, and includes details that
 are unnecessary for getting started with Ember.
@@ -104,7 +102,7 @@ Here is a simple example:
   <img src="/images/view-guide/render-buffer.png">
 </figure>
 
-In addition to children (Strings and other `RenderBuffer`s), a `RenderBuffer` also encapsulates the element's tag name, id, classes, style, and other attributes. This makes it possible for the render process to modify one of these properties (style, for example), even after its child Strings have rendered. Because many of these properties are controlled via bindings (e.g. using `bindAttr`), this makes the process robust and transparent.
+In addition to children (Strings and other `RenderBuffer`s), a `RenderBuffer` also encapsulates the element's tag name, id, classes, style, and other attributes. This makes it possible for the render process to modify one of these properties (style, for example), even after its child Strings have rendered. Because many of these properties are controlled via bindings (e.g. using `bind-attr`), this makes the process robust and transparent.
 
 ##### 3. Element Creation and Insertion
 
@@ -395,13 +393,6 @@ events:
     <tr><td>click</td><td>click</td></tr>
     <tr><td>dblclick</td><td>doubleClick</td></tr>
     <tr><td>mousemove</td><td>mouseMove</td></tr>
-  </tbody>
-</table>
-<table class="figure">
-  <thead>
-    <tr><th>Event Name</th><th>Method Name</th></tr>
-  </thead>
-  <tbody>
     <tr><td>focusin</td><td>focusIn</td></tr>
     <tr><td>focusout</td><td>focusOut</td></tr>
     <tr><td>mouseenter</td><td>mouseEnter</td></tr>

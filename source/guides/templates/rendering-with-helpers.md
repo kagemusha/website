@@ -1,5 +1,3 @@
-## Rendering with Helpers
-
 Ember provides several helpers that allow you to render other views and templates in different ways.
 
 ### The `{{partial}}` Helper
@@ -29,8 +27,6 @@ Ember provides several helpers that allow you to render other views and template
 ```
 
 The partial's `data-template-name` must start with an underscore (e.g. `data-template-name='_author'` or `data-template-name='foo/_bar'`)
-
-Note: in cases where you may have used `{{template}}` in the past, you should likely use `{{partial}}` instead.
 
 ### The `{{view}}` Helper
 

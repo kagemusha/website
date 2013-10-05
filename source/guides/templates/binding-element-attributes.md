@@ -1,5 +1,3 @@
-## Binding Element Attributes
-
 In addition to normal text, you may also want to have your templates
 contain HTML elements whose attributes are bound to the controller.
 
@@ -8,7 +6,7 @@ to an image:
 
 ```handlebars
 <div id="logo">
-  <img {{bindAttr src="logoUrl"}} alt="Logo">
+  <img {{bind-attr src=logoUrl}} alt="Logo">
 </div>
 ```
 
@@ -20,11 +18,11 @@ This generates the following HTML:
 </div>
 ```
 
-If you use `{{bindAttr}}` with a Boolean value, it will add or remove
+If you use `{{bind-attr}}` with a Boolean value, it will add or remove
 the specified attribute. For example, given this template:
 
 ```handlebars
-<input type="checkbox" {{bindAttr disabled="isAdministrator"}}>
+<input type="checkbox" {{bind-attr disabled=isAdministrator}}>
 ```
 
 If `isAdministrator` is `true`, Handlebars will produce the following

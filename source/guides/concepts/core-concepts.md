@@ -1,5 +1,3 @@
-## Core Concepts
-
 To get started with Ember.js, there are a few core concepts you
 should understand. 
 
@@ -35,20 +33,13 @@ model, and the template automatically updates itself if the model changes.
 In addition to plain HTML, templates can contain:
 
 * **Expressions**, like `{{firstName}}`, which take information from
-  the template's model and puts it into HTML.
+  the template's model and put it into HTML.
 * **Outlets**, which are placeholders for other templates. As users
   move around your app, different templates can be plugged into the
   outlet by the router. You can put outlets into your template using the
   `{{outlet}}` helper.
 * **Components**, custom HTML elements that you can use to clean up
   repetitive templates or create reusable controls.
-
-#### Models
-
-A **model** is an object that stores _persistent state_. Templates are
-responsible for displaying the model to the user by turning it into
-HTML. In many applications, models are loaded via an HTTP JSON API,
-although Ember is agnostic to the backend that you choose.
 
 #### Router
 
@@ -60,6 +51,21 @@ up-to-date.
 This means that, at any point, users are able to share the URL of your
 app. When someone clicks the link, they reliably see the same content as
 the original user.
+
+#### Components
+
+A **component** is a custom HTML tag whose behavior you implement using
+JavaScript and whose appearance you describe using Handlebars templates.
+They allow you to create reusable controls that can simplify your
+application's templates.
+
+#### Models
+
+A **model** is an object that stores _persistent state_. Templates are
+responsible for displaying the model to the user by turning it into
+HTML. In many applications, models are loaded via an HTTP JSON API,
+although Ember is agnostic to the backend that you choose.
+
 
 #### Route
 

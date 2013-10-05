@@ -43,7 +43,7 @@ module("Integration Tests", {
  - Fills in the selected input with the given text and returns a promise that fulfills when all resulting async behavior is complete.
 * `click(selector)`
   - Clicks an element and triggers any actions triggered by the element's `click` event and returns a promise that fulfills when all resulting async behavior is complete.
-* `keyDown(selector, type, keyCode)`
+* `keyEvent(selector, type, keyCode)`
   - Simulates a key event type, e.g. `keypress`, `keydown`, `keyup` with the desired keyCode on element found by the selector.
 * `wait()`
   - Returns a promise that fulfills when all async behavior is complete.
@@ -111,4 +111,7 @@ Ember.Test.registerHelper('dblclick', function(app, selector, context) {
 });
 ```
 
-**(Please note: Only development builds of Ember include the testing package.)**
+### Test adapters for other libraries
+If you use a library other than QUnit, your test adapter will need to provide methods for `asyncStart` and `asyncEnd`. To facilitate asynchronous testing, the default test adapter for QUnit uses methods that QUnit provides: (globals) `stop()` and `start()`.
+
+**(Please note: Only development builds of Ember include the testing package. The ember-testing package is not included in the production build of Ember. The package can be loaded in your dev or qa builds to facilitate testing your application. By not including the ember-testing package in production, your tests will not be executable in a production environment.)**

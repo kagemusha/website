@@ -1,5 +1,3 @@
-## Handling Events
-
 Instead of having to register event listeners on elements you'd like to
 respond to, simply implement the name of the event you want to respond to
 as a method on your view.
@@ -36,18 +34,20 @@ To have the click event from `App.ClickableView` affect the state of your applic
 ````javascript
 App.ClickableView = Ember.View.extend({
   click: function(evt) {
-    this.get('controller').send('turnItUp', 11); 
+    this.get('controller').send('turnItUp', 11);
   }
 });
 ````
 
-If the controller has a method called `turnItUp`, it will be called:
+If the controller has an action handler called `turnItUp`, it will be called:
 
 
 ````javascript
 App.PlaybackController = Ember.ObjectController.extend({
-  turnItUp: function(level){
-    //Do your thing
+  actions: {
+    turnItUp: function(level){
+      //Do your thing
+    }
   }
 });
 ````
@@ -56,7 +56,7 @@ If it doesn't, the message will be passed to the current route:
 
 ````javascript
 App.PlaybackRoute = Ember.Route.extend({
-  events: {
+  actions: {
     turnItUp: function(level){
       //This won't be called if it's defined on App.PlaybackController
     }

@@ -1,5 +1,3 @@
-## Inserting Views in Templates
-
 So far, we've discussed writing templates for a single view. However, as your application grows, you will often want to create a hierarchy of views to encapsulate different areas on the page. Each view is responsible for handling events and maintaining the properties needed to display it.
 
 ### {{view}}
@@ -24,15 +22,19 @@ App.InfoView = Ember.View.extend({
 });
 ```
 
-```handlebars
-User: {{view.firstName}} {{view.lastName}}
-{{view App.InfoView}}
+```html
+<script type="text/x-handlebars" data-template-name="user">
+  User: {{view.firstName}} {{view.lastName}}
+  {{view App.InfoView}}
+</script>
 ```
 
-```handlebars
-<b>Posts:</b> {{view.posts}}
-<br>
-<b>Hobbies:</b> {{view.hobbies}}
+```html
+<script type="text/x-handlebars" data-template-name="info">
+  <b>Posts:</b> {{view.posts}}
+  <br>
+  <b>Hobbies:</b> {{view.hobbies}}
+</script>
 ```
 
 If we were to create an instance of `App.UserView` and render it, we would get

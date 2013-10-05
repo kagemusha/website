@@ -1,6 +1,4 @@
-## The Application Template
-
-The application template is the default template that is rendered when
+The `application` template is the default template that is rendered when
 your application starts. 
 
 You should put your header, footer, and any other decorative content
@@ -28,6 +26,9 @@ The header and footer will always be displayed on screen, but the
 contents of the `<div>` will change depending on if the user is
 currently at `/posts` or `/posts/15`, for example.
 
+For more information about how outlets are filled in by the router, see
+[Routing](/guides/routing).
+
 If you are keeping your templates in HTML, create a `<script>` tag
 without a template name. It will automatically be compiled and appended
 to the screen.
@@ -42,5 +43,3 @@ to the screen.
 
 If you're using build tools to load your templates, make sure you name
 the template `application`.
-
-For more information, see [Templates](/guides/templates/handlebars-basics) and [Routing](/guides/routing/).

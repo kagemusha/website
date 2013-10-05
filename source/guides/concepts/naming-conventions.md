@@ -1,5 +1,3 @@
-## Naming Conventions
-
 Ember.js uses naming conventions to wire up your objects without a
 lot  of boilerplate. You will want to  use the conventional names
 for your routes, controllers and templates.
@@ -95,7 +93,7 @@ Here's an example:
 App.FavoritesRoute = Ember.Route.extend({
   model: function() {
     // the model is an Array of all of the posts
-    return App.Post.find();
+    return this.store.find('post');
   }
 });
 ```
@@ -153,7 +151,7 @@ generating a link for a model object).
 ```javascript
 App.PostRoute = Ember.Route.extend({
   model: function(params) {
-    return App.Post.find(params.post_id);
+    return this.store.find('post', params.post_id);
   },
 
   serialize: function(post) {

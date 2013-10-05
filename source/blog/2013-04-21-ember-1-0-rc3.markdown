@@ -1,7 +1,7 @@
 ---
 title: Ember 1.0 RC3
 author: Stefan Penner
-tags: Releases, Recent Posts
+tags: Releases
 ---
 
 Today we are announcing the third Release Candidate of Ember 1.0.
@@ -51,8 +51,8 @@ will be our official library.
 ### Ember Builds
 
 Each successful [CI](https://travis-ci.org/emberjs/ember.js) run now publishes its build results to
-[http://builds.emberjs.com/](http://builds.emberjs.com/). This should make
-it much simpler to reference and use the [the latest ember build](http://builds.emberjs.com/ember-latest.js).
+[http://emberjs.com/builds](http://emberjs.com/builds). This should make
+it much simpler to reference and use the [the latest ember build](http://builds.emberjs.com/canary/ember.js).
 
 Thanks to Stanley Stuart, Luke Melia, Erik Bryn and others for getting this set up.
 

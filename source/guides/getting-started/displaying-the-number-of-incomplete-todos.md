@@ -1,5 +1,3 @@
-## Displaying the number of incomplete todos
-
 Next we'll update our template's hard-coded count of completed todos to reflect the actual number of completed todos. Update `index.html` to use two properties:
 
 ```handlebars
@@ -13,6 +11,8 @@ Next we'll update our template's hard-coded count of completed todos to reflect 
 Implement these properties as part of this template's controller, the `Todos.TodosController`:
 
 ```javascript
+// Hint: these lines MUST NOT go into the 'actions' object.
+
 // ... additional lines truncated for brevity ...
 remaining: function () {
   return this.filterProperty('isCompleted', false).get('length');
@@ -32,9 +32,9 @@ The inflection property will return either a plural or singular version of the w
  Reload your web browser to ensure that no errors occur. You should now see an accurate number for remaining todos.
 
 ### Live Preview
-<a class="jsbin-embed" href="http://jsbin.com/ahejub/2/embed?live">Ember.js • TodoMVC</a><script src="http://static.jsbin.com/js/embed.js"></script>
+<a class="jsbin-embed" href="http://jsbin.com/onOCIrA/1/embed?live">Ember.js • TodoMVC</a><script src="http://static.jsbin.com/js/embed.js"></script>
   
 ### Additional Resources
 
-  * [Changes in this step in `diff` format](https://github.com/emberjs/quickstart-code-sample/commit/b878b1bda93e0ae804eb26f28935bd47bc3e84e4)
+  * [Changes in this step in `diff` format](https://github.com/emberjs/quickstart-code-sample/commit/b418407ed9666714c82d894d6b70f785674f7a45)
   * [Computed Properties Guide](/guides/object-model/computed-properties/) 

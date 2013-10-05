@@ -1,5 +1,3 @@
-## Managing Asynchrony in Ember
-
 Many Ember concepts, like bindings and computed properties, are designed
 to help manage asynchronous behavior.
 
@@ -339,3 +337,8 @@ In general, you will very rarely want to register a manual observer in
 this way. Because of the memory management guarantees, we strongly
 recommend that you define your observers as part of the object
 definition if possible.
+
+### Routing
+
+There's an entire page dedicated to managing async within the Ember
+Router: [Asynchronous Routing](/guides/routing/asynchronous-routing)

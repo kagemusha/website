@@ -1,5 +1,3 @@
-## Computed Properties and Aggregate Data
-
 Often, you may have a computed property that relies on all of the items in an
 array to determine its value. For example, you may want to count all of the
 todo items in a controller to determine how many of them are completed.
@@ -7,14 +5,14 @@ todo items in a controller to determine how many of them are completed.
 Here's what that computed property might look like:
 
 ```javascript
-App.TodosController = Ember.Object.extend({
+App.TodosController = Ember.Controller.extend({
   todos: [
     Ember.Object.create({ isDone: false })
   ],
 
   remaining: function() {
     var todos = this.get('todos');
-    return todos.filterProperty('isDone', false).get('length');
+    return todos.filterBy('isDone', false).get('length');
   }.property('todos.@each.isDone')
 });
 ```
@@ -53,3 +51,6 @@ todos.pushObject(todo);
 App.todosController.get('remaining');
 // 1
 ```
+
+Note that `@each` only works one level deep. You cannot use nested forms like
+`todos.@each.owner.name` or `todos.@each.owner.@each.name`.

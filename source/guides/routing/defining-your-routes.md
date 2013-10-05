@@ -1,5 +1,3 @@
-## Defining Your Routes
-
 When your application starts, the router is responsible for displaying
 templates, loading data, and otherwise setting up application state.
 It does so by matching the current URL to the _routes_ that you've
@@ -12,9 +10,14 @@ App.Router.map(function() {
 });
 ```
 
-When the user visits `/`, Ember.js will render the `index` template.
-Visiting `/about` renders the `about` template, and `/favs` renders the
-`favorites` template.
+Now, when the user visits `/about`, Ember.js will render the `about`
+template. Visiting `/favs` will render the `favorites` template.
+
+<aside>
+**Heads up!** You get a few routes for free: the `ApplicationRoute`, the `IndexRoute`
+(corresponding to the `/` path), and the `LoadingRoute` (useful for
+AJAX requests). [See below](#toc_initial-routes) for more details.
+</aside>
 
 Note that you can leave off the path if it is the same as the route
 name. In this case, the following is equivalent to the above example:
@@ -26,20 +29,20 @@ App.Router.map(function() {
 });
 ```
 
-Inside your templates, you can use `{{linkTo}}` to navigate between
+Inside your templates, you can use `{{link-to}}` to navigate between
 routes, using the name that you provided to the `route` method (or, in
 the case of `/`, the name `index`).
 
 ```handlebars
-{{#linkTo 'index'}}<img class="logo">{{/linkTo}}
+{{#link-to 'index'}}<img class="logo">{{/link-to}}
 
 <nav>
-  {{#linkTo 'about'}}About{{/linkTo}}
-  {{#linkTo 'favorites'}}Favorites{{/linkTo}}
+  {{#link-to 'about'}}About{{/link-to}}
+  {{#link-to 'favorites'}}Favorites{{/link-to}}
 </nav>
 ```
 
-The `{{linkTo}}` helper will also add an `active` class to the link that
+The `{{link-to}}` helper will also add an `active` class to the link that
 points to the currently active route.
 
 You can customize the behavior of a route by creating an `Ember.Route`
@@ -178,7 +181,7 @@ and `resource` template.
 
 Routes nested under a resource take the name of the resource plus their
 name as their route name. If you want to transition to a route (either
-via `transitionTo` or `{{#linkTo}}`, make sure to use the full route
+via `transitionTo` or `{{#link-to}}`, make sure to use the full route
 name (`posts.new`, not `new`).
 
 Visiting `/` renders the `index` template, as you would expect.
@@ -205,7 +208,7 @@ route handler might look like this:
 ```js
 App.BlogPostsRoute = Ember.Route.extend({
   model: function() {
-    return App.BlogPost.all();
+    return this.get('store').find('blogPost');
   }
 });
 ```
@@ -231,7 +234,7 @@ App.Router.map(function() {
 
 App.PostRoute = Ember.Route.extend({
   model: function(params) {
-    return App.Post.find(params.post_id);
+    return this.get('store').find('post', params.post_id);
   }
 });
 ```
@@ -264,7 +267,7 @@ App.PostRoute = Ember.Route.extend({
 
   serialize: function(model) {
     // this will make the URL `/posts/foo-post`
-    return { post_slug: model.slug };
+    return { post_slug: model.get('slug') };
   }
 });
 ```
@@ -353,8 +356,79 @@ This router creates five routes:
 </div>
 
 
-<small><sup>2</sup> :post_id is the post's id.  For a post with id = 1, the route will be:
+<small><sup>2</sup> `:post_id` is the post's id.  For a post with id = 1, the route will be:
 `/post/1`</small>
 
 The `comments` template will be rendered in the `post` outlet.
 All templates under `comments` (`comments/index` and `comments/new`) will be rendered in the `comments` outlet.
+
+You are also able to create deeply nested resources in order to preserve the namespace on your routes:
+
+```javascript
+App.Router.map(function() {
+  this.resource('foo', function() {
+    this.resource('foo.bar', { path: '/bar' }, function() {
+      this.route('baz'); // This will be foo.bar.baz
+    });
+  });
+});
+```
+
+This router creates the following routes:
+
+<div style="overflow: auto">
+  <table>
+    <thead>
+    <tr>
+      <th>URL</th>
+      <th>Route Name</th>
+      <th>Controller</th>
+      <th>Route</th>
+      <th>Template</th>
+    </tr>
+    </thead>
+    <tr>
+      <td><code>/</code></td>
+      <td><code>index</code></td>
+      <td><code>App.IndexController</code></td>
+      <td><code>App.IndexRoute</code></td>
+      <td><code>index</code></td>
+    </tr>
+    <tr>
+      <td><code>/foo</code></td>
+      <td><code>foo.index</code></td>
+      <td><code>App.FooIndexController</code></td>
+      <td><code>App.FooIndexRoute</code></td>
+      <td><code>foo/index</code></td>
+    </tr>
+    <tr>
+      <td><code>/foo/bar</code></td>
+      <td><code>foo.bar.index</code></td>
+      <td><code>App.FooBarIndexController</code></td>
+      <td><code>App.FooBarIndexRoute</code></td>
+      <td><code>foo/bar/index</code></td>
+    </tr>
+    <tr>
+      <td><code>/foo/bar/baz</code></td>
+      <td><code>foo.bar.baz</code></td>
+      <td><code>App.FooBarBazController</code></td>
+      <td><code>App.FooBarBazRoute</code></td>
+      <td><code>foo/bar/baz</code></td>
+    </tr>
+  </table>
+</div>
+
+
+### Initial routes
+
+A few routes are immediately available within your application:
+
+  - `App.ApplicationRoute` is entered when your app first boots up. It renders
+    the `application` template.
+
+  - `App.IndexRoute` is the default route, and will render the `index` template
+    when the user visits `/` (unless `/` has been overridden by your own
+    custom route).
+
+Remember, these routes are part of every application, so you don't need to
+specify them in `App.Router.map`.

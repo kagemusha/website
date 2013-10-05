@@ -1,5 +1,3 @@
-## Adding the First Route and Template
-
 Next, we will create an Ember.js application, a route ('`/`'), and convert our static mockup into a Handlebars template.
 
 Inside your `js` directory, add a file for the application at `js/application.js` and a file for the router at `js/router.js`. You may place these files anywhere you like (even just putting all code into the same file), but this guide will assume you have separated them into their own files and named them as indicated.
@@ -52,7 +50,7 @@ Next, update your `index.html` to wrap the inner contents of `<body>` in a Handl
 Reload your web browser to ensure that all files have been referenced correctly and no errors occur.
 
 ### Live Preview
-<a class="jsbin-embed" href="http://jsbin.com/uzeqih/2/embed?live">Ember.js • TodoMVC</a><script src="http://static.jsbin.com/js/embed.js"></script>
+<a class="jsbin-embed" href="http://jsbin.com/OKEMIJi/1/embed?live">Ember.js • TodoMVC</a><script src="http://static.jsbin.com/js/embed.js"></script>
 
 ### Additional Resources
 

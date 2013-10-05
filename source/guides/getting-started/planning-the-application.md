@@ -1,5 +1,3 @@
-## Planning The Application
-
 TodoMVC, despite its small size, contains most of the behaviors typical in modern single page applications. Before continuing, take a moment to understand how TodoMVC works from the user's perspective.
 
 TodoMVC has the following main features:
@@ -7,7 +5,7 @@ TodoMVC has the following main features:
 
   1. It displays a list of todos for a user to see. This list will grow and shrink as the user adds and removes todos.
 
-  1. It accepts text in an `<input>` for entry of new todos. Hitting `<return>` creates the new item and displays it in the list below.
+  1. It accepts text in an `<input>` for entry of new todos. Hitting the `<enter>` key creates the new item and displays it in the list below.
 
   1. It provides a checkbox to toggle between complete and incomplete states for each todo. New todos start as incomplete.
 
@@ -21,8 +19,8 @@ TodoMVC has the following main features:
 
   1. It provides a checkbox to toggle all existing todos between complete and incomplete states. Further, when all todos are completed this checkbox becomes checked without user interaction.
 
-  1. It allows a user to double click to show a textfield for editing a single todo. Hitting `<enter>` or moving focus outside of this textfield will persist the changed text.
+  1. It allows a user to double click to show a textfield for editing a single todo. Hitting the `<enter>` key or moving focus outside of this textfield will persist the changed text.
 
   1. It retains a user's todos between application loads by using the browser's `localstorage` mechanism.
 
-You can interact with a completed version of the application by visiting the [the TodoMVC site](http://addyosmani.github.com/todomvc/).
+You can interact with a completed version of the application by visiting the [TodoMVC site](http://addyosmani.github.com/todomvc/).

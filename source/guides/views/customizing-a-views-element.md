@@ -1,5 +1,3 @@
-## Customizing a View's Element
-
 A view is represented by a single DOM element on the page. You can change what kind of element is created by
 changing the `tagName` property.
 
@@ -160,7 +158,7 @@ You can assign class names similarly:
 {{view App.InfoView class="info urgent"}}
 ```
 
-You can bind class names to a property of the view by using `classBinding` instead of `class`. The same behavior as described in `bindAttr` applies:
+You can bind class names to a property of the view by using `classBinding` instead of `class`. The same behavior as described in `bind-attr` applies:
 
 ```javascript
 App.AlertView = Ember.View.extend({

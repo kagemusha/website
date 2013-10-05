@@ -1,5 +1,3 @@
-## Representing Multiple Models
-
 You can use `Ember.ArrayController` to represent an array of models. To tell an
 `ArrayController` which model to represent, set its `model` property
 in your route's `setupController` method.
@@ -23,7 +21,7 @@ each song:
 <h1>Playlist</h1>
 
 <ul>
-  {{#each controller}}
+  {{#each}}
     <li>{{name}} by {{artist}}</li>
   {{/each}}
 </ul>
@@ -49,10 +47,22 @@ Now we can use this property in our template:
 
 ```handlebars
 <ul>
-  {{#each controller}}
+  {{#each}}
     <li>{{name}} by {{artist}}</li>
   {{/each}}
 </ul>
 
 {{longSongCount}} songs over 30 seconds.
+```
+
+### Sorting
+
+The `Ember.ArrayController` uses the `Ember.SortableMixin` to allow sorting
+of content. There are two properties that can be set in order to set up sorting:
+
+```javascript
+App.SongsController = Ember.ArrayController.extend({
+  sortProperties: ['name', 'artist'],
+  sortAscending: true // false for descending
+});
 ```

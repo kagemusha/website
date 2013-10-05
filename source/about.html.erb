@@ -3,46 +3,43 @@ title: "About"
 ---
 
 <% content_for :head do %>
-  <script type="text/javascript">
-    $(function() {
-      $('#slider').bxSlider({
-        displaySlideQty: 4,
-        moveSlideQty: 4,
-        auto: true,
-        pager: true,
-        speed: 700,
-        pause: 5000
-      });
-
-      // Hack to force proper sizing
-      $('.bx-wrapper, .bx-window').css('width', 940);
-    });
-  </script>
+  <script type="text/javascript" src="/javascripts/about.js"></script>
 <% end %>
 
 <img class="about-header-text" src="/images/about/header-text.png" alt="A framework for creating ambitious web applications.">
 <div id="download">
   <div id="download-ember">
-    <a class="orange button" href="http://builds.emberjs.com/ember-1.0.0-rc.6.js">
-      Download Ember 1.0.0-rc.6
+    <a class="orange button" href="https://github.com/emberjs/starter-kit/archive/v1.0.0.zip">
+      Download the Starter Kit
     </a>
-    <div class="info">56k min+gzip |
-      <a class="debug" href="http://builds.emberjs.com/ember-1.0.0-rc.6.min.js">
-        minified
-      </a> |
-      <a class="debug" href="https://github.com/emberjs/starter-kit/archive/v1.0.0-rc.6.zip">
-        Starter Kit
-      </a>
-      <a href="http://builds.emberjs.com/handlebars-1.0.0-rc.4.js">Download Handlebars</a>
+    <div class="info">
+      1.0.0:
+      <a class="debug" href="http://builds.emberjs.com/tags/v1.0.0/ember.prod.js">production</a>
+      <a class="debug" href="http://builds.emberjs.com/tags/v1.0.0/ember.min.js">(min + gzip  64kb)</a> |
+      <a class="debug" href="http://builds.emberjs.com/tags/v1.0.0/ember.js">debug</a> |
+      <a href="http://builds.emberjs.com/handlebars-1.0.0.js">Handlebars</a>
     </div>
   </div>
+
+  <ul class="social">
+    <li class="twitter">
+      <a href="https://twitter.com/emberjs" class="twitter-follow-button" data-show-count="false" data-lang="en">Follow @emberjs</a>
+    </li>
+
+    <li class="gplus">
+      <a href="https://plus.google.com/101668252557697758617" rel="publisher">
+        Follow on
+        <img src="//ssl.gstatic.com/images/icons/gplus-32.png" alt="Google+" style="border:0;width:20px;height:20px;"/>
+      </a>
+    </li>
+  </ul>
 </div>
 
 <div class="features section">
   <h2>More Productive Out of the Box.</h2>
   <div class="feature">
     <img src="/images/about/ember-handlebars-sm.png" alt="Handlebars">
-    <p>Write dramatically less code with Ember's Handlebars integrated templates that update automatically when the underlying data changes.<br><a href=http://builds.emberjs.com/handlebars-1.0.0-rc.4.js>Download Handlebars</a></p>
+    <p>Write dramatically less code with Ember's Handlebars integrated templates that update automatically when the underlying data changes.
   </div>
   <div class="feature">
     <img src="/images/about/ember-structure-sm.png" alt="Structure">
@@ -55,58 +52,48 @@ title: "About"
 </div>
 
 <div class="getting-started section">
-  <h2>Getting Started with Ember.js is Easy.</h2>
+  <script type="text/x-handlebars" id="application">
+      <div class="example-tabs">
+        {{#each itemController="tabItem"}}
+          <a {{action "selectTab" this}} {{bindAttr class="isSelected:active"}} href="#">{{unbound name}}</a>
+        {{/each}}
+        <span class="tabs-footer"></span>
+      </div>
+      {{syntax-highlight selectedTab.contents}}
+      <img src="/images/about/example-arrow.png" width=80 height=38>
+  </script>
 
-<%# IMPORTANT: If you change the example below, please make sure you update the test at:
-https://github.com/emberjs/ember.js/blob/master/packages/ember/tests/homepage_example_test.js %>
+  <div class="example-app" data-name="binding" data-files="templates/application.hbs">
+    <h2 class="sub">Auto-Updating Handlebars Templates</h2>
+    <p class="prose">Ember makes Handlebars templates even better, by ensuring your HTML
+    stays up-to-date when the underlying model changes. To get started, you
+    don't even need to write any JavaScript.</p>
+  </div>
 
-<% highlight :javascript, :left do %>
-App = Ember.Application.create();
+  <div class="example-app" data-name="components" data-files="components/gravatar.js templates/application.hbs templates/components/gravatar-image.hbs">
+    <h2 class="sub">Components</h2>
+    <p class="prose">Experience the future of the web platform today with Ember's components.
+    Components allow you to create your own application-specific HTML tags,
+    using Handlebars to describe their markup and JavaScript to implement
+    custom behavior.</p>
+  </div>
 
-App.Person = Ember.Object.extend({
-  firstName: null,
-  lastName: null,
+  <div class="example-app example-loading" data-name="loading" data-files="app.js templates/application.hbs">
+    <h2 class="sub">Loading Data from a Server</h2>
+    <p class="prose">
+      Ember.js eliminates the boilerplate of displaying JSON retrieved
+      from your server. If you know how to use jQuery, you know how to
+      fetch models in Ember.
+    </p>
+  </div>
 
-  fullName: function() {
-    return this.get('firstName') +
-           " " + this.get('lastName');
-  }.property('firstName', 'lastName')
-});
-
-App.IndexRoute = Ember.Route.extend({
-  model: function() {
-    var people = [
-      App.Person.create({
-        firstName: "Tom",
-        lastName: "Dale"
-      }),
-      App.Person.create({
-        firstName: "Yehuda",
-        lastName: "Katz"
-      })
-    ];
-    return people;
-  }
-});
-
-<% end %>
-
-<% highlight :html, :right do %>
-<script type="text/x-handlebars">
-  {{outlet}}
-</script>
-
-<script type="text/x-handlebars" id="index">
-  <h1>People</h1>
-
-  <ul>
-  {{#each model}}
-    <li>Hello, <b>{{fullName}}</b>!</li>
-  {{/each}}
-  </ul>
-</script>
-<% end %>
-
+  <div id="routing-example" class="example-app" data-name="routing" data-files="app.js templates/application.hbs templates/index.hbs templates/mail.hbs templates/mailbox.hbs templates/mailbox/index.hbs fixtures.js">
+    <h2 class="sub">Routing</h2>
+    <p class="prose">Build JavaScript apps that don't break the web!
+    Ember.js makes it downright simple to create sophisticated,
+    multi-page JavaScript applications with great URL support, in a
+    fraction of the code you'd write in other frameworks.</p>
+  </div>
 </div>
 
 <div class="users section">
@@ -165,3 +152,6 @@ App.IndexRoute = Ember.Route.extend({
     </a>
   </div>
 </div>
+
+<script>!function(d,s,id){var js,fjs=d.getElementsByTagName(s)[0];if(!d.getElementById(id)){js=d.createElement(s);js.id=id;js.src="//platform.twitter.com/widgets.js";fjs.parentNode.insertBefore(js,fjs);}}(document,"script","twitter-wjs");</script>
+

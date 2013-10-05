@@ -1,5 +1,3 @@
-## Creating a Static Mockup
-
 Before adding any code, we can roughly sketch out the layout of our application. In your text editor, create a new file and name it `index.html`. This file will contain the HTML templates of our completed application and trigger requests for the additional image, stylesheet, and JavaScript resources.
 
 To start, add the following text to `index.html`:
@@ -19,45 +17,45 @@ To start, add the following text to `index.html`:
         <input type="text" id="new-todo" placeholder="What needs to be done?" />
       </header>
 
-        <section id="main">
-          <ul id="todo-list">
-            <li class="completed">
-              <input type="checkbox" class="toggle">
-              <label>Learn Ember.js</label><button class="destroy"></button>
-            </li>
-            <li>
-              <input type="checkbox" class="toggle">
-              <label>...</label><button class="destroy"></button>
-            </li>
-            <li>
-              <input type="checkbox" class="toggle">
-              <label>Profit!</label><button class="destroy"></button>
-            </li>
-          </ul>
+      <section id="main">
+        <ul id="todo-list">
+          <li class="completed">
+            <input type="checkbox" class="toggle">
+            <label>Learn Ember.js</label><button class="destroy"></button>
+          </li>
+          <li>
+            <input type="checkbox" class="toggle">
+            <label>...</label><button class="destroy"></button>
+          </li>
+          <li>
+            <input type="checkbox" class="toggle">
+            <label>Profit!</label><button class="destroy"></button>
+          </li>
+        </ul>
 
-          <input type="checkbox" id="toggle-all">
-        </section>
+        <input type="checkbox" id="toggle-all">
+      </section>
 
-        <footer id="footer">
-          <span id="todo-count">
-            <strong>2</strong> todos left
-          </span>
-          <ul id="filters">
-            <li>
-              <a href="all" class="selected">All</a>
-            </li>
-            <li>
-              <a href="active">Active</a>
-            </li>
-            <li>
-              <a href="completed">Completed</a>
-            </li>
-          </ul>
+      <footer id="footer">
+        <span id="todo-count">
+          <strong>2</strong> todos left
+        </span>
+        <ul id="filters">
+          <li>
+            <a href="all" class="selected">All</a>
+          </li>
+          <li>
+            <a href="active">Active</a>
+          </li>
+          <li>
+            <a href="completed">Completed</a>
+          </li>
+        </ul>
 
-          <button id="clear-completed">
-            Clear completed (1)
-          </button>
-        </footer>
+        <button id="clear-completed">
+          Clear completed (1)
+        </button>
+      </footer>
     </section>
 
     <footer id="info">
